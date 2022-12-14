@@ -16,6 +16,9 @@ const hpApplyRouter = (router)=>{
     // 헬퍼 마이페이지) 기존 자기소개서 insert or update
     router.post('/hp/preidc',this.HpApplyController.postHpPreIdc);
 
+    // 헬퍼 마이페이지) 개인정보 가져오기
+    router.get('/hp/userinfo/:mem_id',this.HpApplyController.getHpInfo);
+
 }
 
 module.exports = hpApplyRouter;

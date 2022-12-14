@@ -1,4 +1,4 @@
-const HpApplyModel = require("../repositorys/hp.apply.repository");
+const HelperApplyModel = require("../repositorys/helper.apply.repository");
 
 const { pool } = require("../config/db");
 
@@ -7,10 +7,10 @@ const { errResponse, response } = require('../utilities/response');
 
 class HpApplyService {
 
-    HpApplyModel;
+    HelperApplyModel;
 
     constructor(){
-        this.HpApplyModel = new HpApplyModel();
+        this.HelperApplyModel = new HelperApplyModel();
     }
 
     
@@ -20,7 +20,7 @@ class HpApplyService {
         try {
             await connection.beginTransaction();
 
-            const Result = await this.HpApplyModel.selectHpIdc(connection, hp_id);
+            const Result = await this.HelperApplyModel.selectHpIdc(connection, hp_id);
 
             await connection.commit();
 
@@ -41,7 +41,7 @@ class HpApplyService {
             await connection.beginTransaction();
 
             const Params = [apply_id, mem_id, hp_id, is_new, new_idc, apply_date, start_point, end_point];
-            const Result = await this.HpApplyModel.insertHpApply(connection, Params);
+            const Result = await this.HelperApplyModel.insertHpApply(connection, Params);
 
             await connection.commit();
 
@@ -61,7 +61,7 @@ class HpApplyService {
         try {
             await connection.beginTransaction();
 
-            const Result = await this.HpApplyModel.selectMemToken(connection, mem_id);
+            const Result = await this.HelperApplyModel.selectMemToken(connection, mem_id);
 
             await connection.commit();
 
@@ -81,7 +81,7 @@ class HpApplyService {
         try {
             await connection.beginTransaction();
 
-            const Result = await this.HpApplyModel.insertAlertMsg(connection, mem_id, message);
+            const Result = await this.HelperApplyModel.insertAlertMsg(connection, mem_id, message);
 
             await connection.commit();
 
@@ -101,7 +101,7 @@ class HpApplyService {
         try {
             await connection.beginTransaction();
 
-            const Result = await this.HpApplyModel.selectMemService(connection, apply_id);
+            const Result = await this.HelperApplyModel.selectMemService(connection, apply_id);
 
             await connection.commit();
 
@@ -120,7 +120,7 @@ class HpApplyService {
         try {
             await connection.beginTransaction();
 
-            const Result = await this.HpApplyModel.selectHpPreIdc(connection, hp_id);
+            const Result = await this.HelperApplyModel.selectHpPreIdc(connection, hp_id);
 
             await connection.commit();
 
@@ -139,7 +139,7 @@ class HpApplyService {
         try {
             await connection.beginTransaction();
             
-            const Result = await this.HpApplyModel.insertHpPreIdc(connection, content, hp_id);
+            const Result = await this.HelperApplyModel.insertHpPreIdc(connection, content, hp_id);
 
             await connection.commit();
 
@@ -158,7 +158,7 @@ class HpApplyService {
         try {
             await connection.beginTransaction();
             
-            const Result = await this.HpApplyModel.updateHpPreIdc(connection, content, hp_id);
+            const Result = await this.HelperApplyModel.updateHpPreIdc(connection, content, hp_id);
 
             await connection.commit();
 

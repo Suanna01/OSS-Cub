@@ -126,6 +126,20 @@ class HpApplyController {
         }      
     }
 
+    // 헬퍼 마이페이지) 개인정보 가져오기
+    getHpInfo = async(req,res)=>{
+        const mem_id = req.params.mem_id;
+
+        if(!mem_id){
+            return res.send(errResponse(baseResponse.POST_POSTIDX_EMPTY));
+        } else if (mem_id <= 0) {
+            return res.send(errResponse(baseResponse.POST_POSTIDX_LENGTH));
+        }
+
+        const Result = await this.HpApplyService.retrieveHpInfo(mem_id);
+
+        return res.send(response(baseResponse.SUCCESS, Result));
+    }
 }
 
 module.exports = HpApplyController;

@@ -5,7 +5,7 @@ const { errResponse, response } = require('../utilities/response');
 
 const { Expo } = require('expo-server-sdk')
 
-class HpApplyController {
+class HelperApplyController {
     HelperApplyService;
 
     constructor(){
@@ -128,4 +128,4 @@ class HpApplyController {
 
 }
 
-module.exports = HpApplyController;
+module.exports = HelperApplyController;

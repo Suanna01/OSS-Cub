@@ -5,7 +5,7 @@ const { pool } = require("../config/db");
 const baseResponse = require('../utilities/baseResponseStatus')
 const { errResponse, response } = require('../utilities/response');
 
-class HpApplyService {
+class HelperApplyService {
 
     HelperApplyModel;
 
@@ -173,4 +173,4 @@ class HpApplyService {
     }
 }
 
-module.exports = HpApplyService;
+module.exports = HelperApplyService;

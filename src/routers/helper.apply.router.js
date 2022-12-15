@@ -1,6 +1,6 @@
 const HelperApplyController = require('../controllers/helper.apply.controller');
 
-const hpApplyRouter = (router)=>{
+const helperApplyRouter = (router)=>{
 
     this.HelperApplyController = new HelperApplyController();
 

@@ -177,7 +177,7 @@ class HelperApplyService {
         try {
             await connection.beginTransaction();
 
-            const Result = await this.HpApplyModel.selectHpInfo(connection, mem_id);
+            const Result = await this.HelperApplyModel.selectHpInfo(connection, mem_id);
 
             await connection.commit();
 

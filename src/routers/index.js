@@ -6,7 +6,7 @@ const router = express.Router();
 // const userRouter = require("./user.router");
 const messageRouter = require("./message.router");
 const applyRouter = require('./apply.router');
-const hpApplyRouter = require('./hp.apply.router');
+const helperApplyRouter = require('./helper.apply.router');
 const helperRouter = require('./helper.router');
 const memberRouter = require('./member.router');
 const alertRouter = require('./alert.router');
@@ -19,7 +19,7 @@ module.exports = () => {
     // commentRouter(router);
     messageRouter(router);
     applyRouter(router);
-    hpApplyRouter(router);
+    helperApplyRouter(router);
     helperRouter(router);
     memberRouter(router);
 

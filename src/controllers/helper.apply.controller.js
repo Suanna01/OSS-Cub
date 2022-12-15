@@ -1,15 +1,15 @@
-const HpApplyService = require('../services/hp.apply.service');
+const HelperApplyService = require('../services/helper.apply.service');
 
 const baseResponse = require('../utilities/baseResponseStatus');
 const { errResponse, response } = require('../utilities/response');
 
 const { Expo } = require('expo-server-sdk')
 
-class HpApplyController {
-    HpApplyService;
+class HelperApplyController {
+    HelperApplyService;
 
     constructor(){
-        this.HpApplyService = new HpApplyService();
+        this.HelperApplyService = new HelperApplyService();
     }
 
     // 헬퍼 퀵/사전 활동 지원 서비스) 지원하기 -기존 자기소개서 보기
@@ -22,7 +22,7 @@ class HpApplyController {
             return res.send(errResponse(baseResponse.POST_POSTIDX_LENGTH));
         }
 
-        const Result = await this.HpApplyService.retrieveHpApply(hp_id);
+        const Result = await this.HelperApplyService.retrieveHpApply(hp_id);
 
         return res.send(response(baseResponse.SUCCESS, Result));
     }
@@ -31,17 +31,17 @@ class HpApplyController {
     postHpApply = async(req,res)=>{
         const {apply_id, mem_id, hp_id, is_new, new_idc, apply_date, start_point, end_point} = req.body;
 
-        const Result = await this.HpApplyService.completeHpApply(
+        const Result = await this.HelperApplyService.completeHpApply(
             apply_id, mem_id, hp_id, is_new, new_idc, apply_date, start_point, end_point
         );
         
         // mem_id의 token가져오기
-        const tokenResult = await this.HpApplyService.retrieveMemToken(
+        const tokenResult = await this.HelperApplyService.retrieveMemToken(
             mem_id
         );
 
         // 해당 서비스의 시간, 날짜 가져오기
-        const serviceResult = await this.HpApplyService.retrieveHpService(
+        const serviceResult = await this.HelperApplyService.retrieveHpService(
             apply_id
         );
 
@@ -80,7 +80,7 @@ class HpApplyController {
         console.log("service alert message : ", message);
 
         // 알림 목록 저장
-        const messageResult = await this.HpApplyService.saveMessageService(
+        const messageResult = await this.HelperApplyService.saveMessageService(
             mem_id, message
         );
 
@@ -97,7 +97,7 @@ class HpApplyController {
             return res.send(errResponse(baseResponse.POST_POSTIDX_LENGTH));
         }
 
-        const Result = await this.HpApplyService.retrieveHpPreIdc(hp_id);
+        const Result = await this.HelperApplyService.retrieveHpPreIdc(hp_id);
 
         return res.send(response(baseResponse.SUCCESS, Result));
     }
@@ -113,13 +113,13 @@ class HpApplyController {
         }
 
         if (is_exist == 0) {
-            const insertResult = await this.HpApplyService.firstHpPreIdc(
+            const insertResult = await this.HelperApplyService.firstHpPreIdc(
                 content, hp_id
             );
             return res.send(response(baseResponse.SUCCESS, insertResult));
         }
         else if (is_exist == 1){
-            const updateResult = await this.HpApplyService.modifyHpPreIdc(
+            const updateResult = await this.HelperApplyService.modifyHpPreIdc(
                 content, hp_id
             );
             return res.send(response(baseResponse.SUCCESS, updateResult));
@@ -128,4 +128,4 @@ class HpApplyController {
 
 }
 
-module.exports = HpApplyController;
+module.exports = HelperApplyController;

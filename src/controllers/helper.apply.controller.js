@@ -136,7 +136,7 @@ class HelperApplyController {
             return res.send(errResponse(baseResponse.POST_POSTIDX_LENGTH));
         }
 
-        const Result = await this.HpApplyService.retrieveHpInfo(mem_id);
+        const Result = await this.HelperApplyService.retrieveHpInfo(mem_id);
 
         return res.send(response(baseResponse.SUCCESS, Result));
     }

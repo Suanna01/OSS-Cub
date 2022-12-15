@@ -10,7 +10,7 @@ pipeline {
         stage("Build image") {
             steps {
                 script {
-                    myapp = docker.build("sungone/oss-cub:latest}")
+                    myapp = docker.build("sungone/oss-cub:latest")
                 }
             }
         }

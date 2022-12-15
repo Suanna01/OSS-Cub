@@ -1,0 +1,15 @@
+FROM node:16.6
+COPY . /app
+WORKDIR /app
+RUN npm install
+
+ENV DB_USER "root"
+ENV DB_PASS "password"
+ENV DB_HOST 127.0.0.1
+ENV DB_NAME "oss_db"
+ENV DB_PORT 3306
+ENV SERVER_PORT 3000
+ENV SERVER_HOST localhost
+ENV JWT_SECRET MYSECRET
+
+CMD ["npm", "start"]

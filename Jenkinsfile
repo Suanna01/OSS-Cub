@@ -29,11 +29,5 @@ pipeline {
                 }
             }
         }        
-        stage('Deploy to GKE') {
-            steps{
-                sh "sed -i 's/sungone/oss-cub:latest/g' deployment.yaml"
-                step([$class: 'KubernetesEngineBuilder', projectId: oss-fall, clusterName: k8s, location: asia-northeast-3-a, manifestPattern: 'deployment.yaml', credentialsId: gke, verifyDeployments: true])
-            }
-        }
     }
 }

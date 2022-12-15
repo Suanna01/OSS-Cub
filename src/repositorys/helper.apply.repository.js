@@ -131,6 +131,22 @@ class HelperApplyModel {
 
         return Result;
     }
+
+
+    // 헬퍼 마이페이지) 개인정보 가져오기
+    selectHpInfo = async (conn, mem_id) => {
+        const selectHpIdcQuery =  `
+            SELECT mem_gender, mem_birth
+            FROM member
+            WHERE mem_id = ?
+        `;
+        const [Row] = await conn.query(selectHpIdcQuery, mem_id);
+
+        return Row;
+    }
+
 }
 
+
 module.exports = HelperApplyModel;
+

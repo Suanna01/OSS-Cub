@@ -171,6 +171,26 @@ class HelperApplyService {
             connection.release();
         }
     }
+
+    retrieveHpInfo = async(mem_id) => {
+        const connection = await pool.getConnection(async (connection)=>connection);
+        try {
+            await connection.beginTransaction();
+
+            const Result = await this.HpApplyModel.selectHpInfo(connection, mem_id);
+
+            await connection.commit();
+
+            return response(baseResponse.SUCCESS,Result);
+        } catch (error) {
+            console.log(error);
+            await connection.rollback();
+            return errResponse(baseResponse.DB_ERROR);
+        } finally {
+            connection.release();
+        }
+    }
 }
 
 module.exports = HelperApplyService;
+

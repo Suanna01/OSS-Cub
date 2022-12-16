@@ -1,6 +1,6 @@
 const ApplyModel = require("../repositorys/apply.repository");
 const RoomRepository = require("../repositorys/room.repository");
-const HpApplyModel = require("../repositorys/hp.apply.repository");
+const HelperApplyModel = require("../repositorys/helper.apply.repository");
 const MemberModel = require("../repositorys/member.repository");
 const ProgressListRepository = require('../repositorys/progressList.repository');
 const MessageRepository = require('../repositorys/message.repository');
@@ -18,7 +18,7 @@ class ApplyService {
     constructor(){
         this.ApplyModel = new ApplyModel();
         this.RoomRepository = new RoomRepository();
-        this.HpApplyModel = new HpApplyModel();
+        this.HelperApplyModel = new HelperApplyModel();
         this.MemberModel = new MemberModel();
         this.ProgressListRepository = new ProgressListRepository();
         this.MessageRepository = new MessageRepository();

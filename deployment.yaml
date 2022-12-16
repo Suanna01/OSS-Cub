@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: oss
+  labels:
+    app: oss
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: oss
+  template:
+    metadata:
+      labels:
+        app: oss
+        tier: oss
+    spec:
+      containers:
+      - name: oss
+        image: listenyoon/oss-cub:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+          name: oss
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: oss
+  labels:
+    app: oss
+spec:
+  ports:
+  - port: 80
+    targetPort: 3000
+  selector:
+    app: oss
+    tier: oss
+  type: LoadBalancer

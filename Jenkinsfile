@@ -27,7 +27,7 @@ pipeline {
         }
    stage('Deploy to GKE') {
        when {
-          branch 'develop'
+          branch 'main'
            }
            steps{
           sh "sed -i 's/oss-cub:latest/oss-cub:${env.BUILD_ID}/g' deployment.yaml"
